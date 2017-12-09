@@ -1,6 +1,12 @@
-from django.http import HttpResponse
-from channels.handler import AsgiHandler
-def http_request_consumer(message):
-    response = HttpResponse('Hello world! You asked for %s' % message.content['path'])
-    for chunk in AsgiHandler.encode_response(response):
-        message.reply_channel.send(chunk)
+import json
+import time
+
+from django.core.mail import send_mail
+from channels.channel import Group
+
+
+
+def send_email_consumer(message):
+    payload = message.content['payload']
+    send_mail(payload['subject'], payload['body'], 'root@localhost', [payload['email']],
+              fail_silently=False)

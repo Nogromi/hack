@@ -25,9 +25,30 @@ SECRET_KEY = '+p-n*+cw2$#=dff5sm+k&zll(xv&^v7j!d6p8-g+q9)811y_oz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.5.168', '192.168.5.132']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.5.168', '192.168.5.132', 'hardcats.joinposter.com']
 
+CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
+    # 'channels',
 ]
 
 
@@ -49,6 +70,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'selforder.middleware.MyMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -127,3 +150,4 @@ CHANNEL_LAYERS = {
         'ROUTING': 'mysite.routing.channel_routing',
     },
 }
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

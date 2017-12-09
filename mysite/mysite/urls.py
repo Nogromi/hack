@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from  selforder import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^getCategories',views.categories, name='categories'),
+    url(r'^getCategories', views.categories, name='categories'),
+    url(r'^getProducts', views.products, name='products'),
+    url(r'^getTables', views.tables, name = 'tables'),
 
 ]
