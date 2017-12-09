@@ -46,3 +46,7 @@ def tables(request):
     data = json.loads(requests.get(url, params={'token': token, 'spot_id': 1, 'hall_id': 1, 'without_deleted' : 1 }).text)
 
     return JsonResponse(data)
+
+def order(request):
+    pass
+    # request.POST
