@@ -25,7 +25,7 @@ SECRET_KEY = '+p-n*+cw2$#=dff5sm+k&zll(xv&^v7j!d6p8-g+q9)811y_oz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.5.168']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.5.168', '192.168.5.132']
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'channels',
+    'channels',
 ]
 
 
@@ -120,10 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-#
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'asgiref.inmemory.ChannelLayer',
-#         'ROUTING': 'myproj.routing.channel_routing',
-#     },
-# }
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgiref.inmemory.ChannelLayer',
+        'ROUTING': 'mysite.routing.channel_routing',
+    },
+}
