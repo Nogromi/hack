@@ -32,7 +32,7 @@ def products(request):
 
         return JsonResponse(data)
     else:
-        print("options")
+        print("name: ", request, "type: ", request.method)
         category_id = request.POST['category_id']
 
         data = json.loads(requests.get(url, params={'token': token, 'category_id': category_id}).text)
